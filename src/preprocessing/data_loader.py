@@ -3,8 +3,14 @@ import pandas as pd
 import os
 from dotenv import load_dotenv
 
-# .env dosyasını yükle
-load_dotenv()
+from pathlib import Path
+
+env_path = Path(__file__).resolve().parent.parent.parent / ".env"
+load_dotenv(dotenv_path=env_path)
+# Debugging için ortam değişkenlerini ekrana yazdır
+print("MongoDB URI:", os.getenv("MONGODB_URI"))
+print("MongoDB DB:", os.getenv("MONGODB_DB"))
+print("MongoDB Collection:", os.getenv("MONGODB_COLLECTION"))
 
 def fetch_and_export():
     # Ortam değişkenlerini al
